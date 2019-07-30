@@ -37,7 +37,9 @@ app.get("/", (req,res) => {
 	res.render("landing.ejs");
 });
 
-//Campgrounds
+
+//REST API \/
+//INDEX - show all CG's
 app.get("/campgrounds", (req,res) => {
 	//get all CG's from DB
 	Campground.find({}, (err, allCampgrounds) => {
@@ -49,7 +51,7 @@ app.get("/campgrounds", (req,res) => {
 	});
 });
 
-//REST
+//CREATE - add new CG to database
 app.post("/campgrounds", (req,res) => {
 	//get data and add to array
 	var name = req.body.name;
@@ -63,13 +65,17 @@ app.post("/campgrounds", (req,res) => {
 			res.redirect("/campgrounds");
 		}
 	});
-	
 });
 
+//NEW - show form to create new CG
 app.get("/campgrounds/new", (req,res) => {
 	res.render("new.ejs");
 });
 
+app.get("campgrounds/:id", (req,res) => {
+	console.log("SHOW PAGE");
+});
+//REST API /\
 
 app.listen(3000, ()=> {
 	console.log("YelpCamp listening on Port 3000");
