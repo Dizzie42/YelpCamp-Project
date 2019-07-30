@@ -18,12 +18,13 @@ app.set("view engine", "ejs");
 //Schema
 var campgroundSchema = new mongoose.Schema({
 	name: String,
-	image: String
+	image: String,
+	description: String
 });
 
 var Campground = mongoose.model("Campground", campgroundSchema);
 
-// Campground.create({name: "Granite Hill", image: "https://www.nps.gov/arch/planyourvisit/images/delicate3.jpg?maxwidth=650&autorotate=false"}, (err, campground) => {
+// Campground.create({name: "Granite Hill", image: "https://www.nps.gov/arch/planyourvisit/images/delicate3.jpg?maxwidth=650&autorotate=false", description: "This place sucks and smells like shite"}, (err, campground) => {
 // 	if(err){
 // 		console.log(err,campground);
 // 	} else {
@@ -38,7 +39,8 @@ app.get("/", (req,res) => {
 });
 
 
-//REST API \/
+//REST API \/ \/ \/ -------------------------------------------------
+
 //INDEX - show all CG's
 app.get("/campgrounds", (req,res) => {
 	//get all CG's from DB
@@ -46,7 +48,7 @@ app.get("/campgrounds", (req,res) => {
 		if(err){
 			console.log(err);
 		} else {
-			res.render("campgrounds",{campgrounds:allCampgrounds});
+			res.render("index",{campgrounds:allCampgrounds});
 		}
 	});
 });
@@ -56,7 +58,8 @@ app.post("/campgrounds", (req,res) => {
 	//get data and add to array
 	var name = req.body.name;
 	var image = req.body.image;
-	var newCampground = {name: name, image: image};
+	var desc = req.body.description;
+	var newCampground = {name: name, image: image, description: desc};
 	//Create new CG and save to DB
 	Campground.create(newCampground, (err, newCg) => {
 		if(err){
@@ -72,10 +75,19 @@ app.get("/campgrounds/new", (req,res) => {
 	res.render("new.ejs");
 });
 
-app.get("campgrounds/:id", (req,res) => {
-	console.log("SHOW PAGE");
+//SHOW - shows more info on campgrounds
+app.get("/campgrounds/:id", (req,res) => {
+	//find CG with provided ID
+	Campground.findById(req.params.id, (err, foundCampground) => {
+		if(err){
+			console.log(err);
+		} else {
+			res.render("show", {campground: foundCampground});
+		}
+	});
 });
-//REST API /\
+
+//REST API /\ /\ /\ -------------------------------------------------
 
 app.listen(3000, ()=> {
 	console.log("YelpCamp listening on Port 3000");
