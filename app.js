@@ -1,22 +1,36 @@
-var express = require("express");
-var app = express();
-var bodyParser = require("body-parser");
+var express = require("express"),
+	app = express(),
+	bodyParser = require("body-parser"),
+	mongoose = require("mongoose");
+
+mongoose.connect("mongodb://localhost/yelp_camp", {
+	useNewUrlParser: true,
+	useCreateIndex: true,
+}).then(() => {
+	console.log('Connected to DB');
+}).catch(err => {
+	console.log('ERROR connecting to database: ', err.message);
+});
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", "ejs");
 
-//TEMP
-var campgrounds = [
-	{name: "Salmon Creek", image: "https://www.nps.gov/lavo/planyourvisit/images/Bird-banding-evening-grosbeak.jpg?maxwidth=650&autorotate=false"},
-	{name: "Granite Hill", image: "https://www.nps.gov/arch/planyourvisit/images/delicate3.jpg?maxwidth=650&autorotate=false"},
-	{name: "Mountain Gota's Rest", image: "https://www.hoa.africom.mil/Img/18430/LowRes/combined-joint-task-force-horn-of-africa-image"},
-	{name: "Salmon Creek", image: "https://www.nps.gov/lavo/planyourvisit/images/Bird-banding-evening-grosbeak.jpg?maxwidth=650&autorotate=false"},
-	{name: "Granite Hill", image: "https://www.nps.gov/arch/planyourvisit/images/delicate3.jpg?maxwidth=650&autorotate=false"},
-	{name: "Mountain Gota's Rest", image: "https://www.hoa.africom.mil/Img/18430/LowRes/combined-joint-task-force-horn-of-africa-image"},
-	{name: "Salmon Creek", image: "https://www.nps.gov/lavo/planyourvisit/images/Bird-banding-evening-grosbeak.jpg?maxwidth=650&autorotate=false"},
-	{name: "Granite Hill", image: "https://www.nps.gov/arch/planyourvisit/images/delicate3.jpg?maxwidth=650&autorotate=false"},
-	{name: "Mountain Gota's Rest", image: "https://www.hoa.africom.mil/Img/18430/LowRes/combined-joint-task-force-horn-of-africa-image"}
-];
+//Schema
+var campgroundSchema = new mongoose.Schema({
+	name: String,
+	image: String
+});
+
+var Campground = mongoose.model("Campground", campgroundSchema);
+
+// Campground.create({name: "Granite Hill", image: "https://www.nps.gov/arch/planyourvisit/images/delicate3.jpg?maxwidth=650&autorotate=false"}, (err, campground) => {
+// 	if(err){
+// 		console.log(err,campground);
+// 	} else {
+// 		console.log("New campground: ");
+// 		console.log(campground);
+// 	}
+// });
 
 //Landing Page
 app.get("/", (req,res) => {
@@ -25,7 +39,14 @@ app.get("/", (req,res) => {
 
 //Campgrounds
 app.get("/campgrounds", (req,res) => {
-	res.render("campgrounds", {campgrounds:campgrounds});
+	//get all CG's from DB
+	Campground.find({}, (err, allCampgrounds) => {
+		if(err){
+			console.log(err);
+		} else {
+			res.render("campgrounds",{campgrounds:allCampgrounds});
+		}
+	});
 });
 
 //REST
@@ -34,9 +55,15 @@ app.post("/campgrounds", (req,res) => {
 	var name = req.body.name;
 	var image = req.body.image;
 	var newCampground = {name: name, image: image};
-	campgrounds.push(newCampground);
-	//redirect to campgrounds page
-	res.redirect("/campgrounds");
+	//Create new CG and save to DB
+	Campground.create(newCampground, (err, newCg) => {
+		if(err){
+			console.log(err);
+		} else {
+			res.redirect("/campgrounds");
+		}
+	});
+	
 });
 
 app.get("/campgrounds/new", (req,res) => {
