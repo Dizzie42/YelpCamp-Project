@@ -1,9 +1,13 @@
 var express = require("express"),
 	app = express(),
 	bodyParser = require("body-parser"),
-	mongoose = require("mongoose");
+	mongoose = require("mongoose"),
+	Campground = require("./models/campground"),
+	seedDB = require("./seeds");
 
-mongoose.connect("mongodb://localhost/yelp_camp", {
+seedDB();
+
+mongoose.connect("mongodb+srv://devsprout:1234@udemy-project-hpcze.mongodb.net/YelpCamp?retryWrites=true&w=majority", {
 	useNewUrlParser: true,
 	useCreateIndex: true,
 }).then(() => {
@@ -12,17 +16,21 @@ mongoose.connect("mongodb://localhost/yelp_camp", {
 	console.log('ERROR connecting to database: ', err.message);
 });
 
+
+// const MongoClient = require(‘mongodb’).MongoClient;
+// const uri = "mongodb+srv://devsprout:1234@udemy-project-hpcze.mongodb.net/test?retryWrites=true&w=majority";
+// const client = new MongoClient(uri, { useNewUrlParser: true });
+// client.connect(err => {
+//   const collection = client.db("test").collection("devices");
+//   // perform actions on the collection object
+//   client.close();
+// });
+
+
+
 app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", "ejs");
 
-//Schema
-var campgroundSchema = new mongoose.Schema({
-	name: String,
-	image: String,
-	description: String
-});
-
-var Campground = mongoose.model("Campground", campgroundSchema);
 
 // Campground.create({name: "Granite Hill", image: "https://www.nps.gov/arch/planyourvisit/images/delicate3.jpg?maxwidth=650&autorotate=false", description: "This place sucks and smells like shite"}, (err, campground) => {
 // 	if(err){
@@ -53,6 +61,11 @@ app.get("/campgrounds", (req,res) => {
 	});
 });
 
+//NEW - show form to create new CG
+app.get("/campgrounds/new", (req,res) => {
+	res.render("new.ejs");
+});
+
 //CREATE - add new CG to database
 app.post("/campgrounds", (req,res) => {
 	//get data and add to array
@@ -70,15 +83,11 @@ app.post("/campgrounds", (req,res) => {
 	});
 });
 
-//NEW - show form to create new CG
-app.get("/campgrounds/new", (req,res) => {
-	res.render("new.ejs");
-});
 
 //SHOW - shows more info on campgrounds
 app.get("/campgrounds/:id", (req,res) => {
 	//find CG with provided ID
-	Campground.findById(req.params.id, (err, foundCampground) => {
+	Campground.findById(req.params.id).populate("comments").exec((err, foundCampground) => {
 		if(err){
 			console.log(err);
 		} else {
