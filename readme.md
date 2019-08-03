@@ -43,3 +43,16 @@ Part 5:
 
 	-Add a navbar to all templates
 	-Style the campground form
+	
+Part 6:
+#Add comments Model
+
+	-Add comment model
+	-Add seeds.js to give us test data and comments each time we run the app
+	-display comments on show.ejs
+	
+Part 7:
+#Comments New/Create
+
+	-Add comment new and create (POST) routes
+	-Add new comment form and link it all up
