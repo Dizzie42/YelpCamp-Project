@@ -20,21 +20,23 @@ mongoose.connect("mongodb+srv://devsprout:1234@udemy-project-hpcze.mongodb.net/Y
 	console.log('ERROR connecting to database: ', err.message);
 });
 
-
+//Passsport config
+app.use(require("express-session")({
+	secret: "Cutest Dog",
+	resave: false,
+	saveUninitialized: false
+}));
+app.use(passport.initialize());
+app.use(passport.session());
+passport.use(new LocalStrategy(User.authenticate()));
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", "ejs");
 app.use(express.static(__dirname + "/public"));
 
 
-// Campground.create({name: "Granite Hill", image: "https://www.nps.gov/arch/planyourvisit/images/delicate3.jpg?maxwidth=650&autorotate=false", description: "This place sucks and smells like shite"}, (err, campground) => {
-// 	if(err){
-// 		console.log(err,campground);
-// 	} else {
-// 		console.log("New campground: ");
-// 		console.log(campground);
-// 	}
-// });
 
 //Landing Page
 app.get("/", (req,res) => {
@@ -125,6 +127,25 @@ app.post("/campgrounds/:id/comments", (req,res) => {
 	});
 });
 //REST API /\ /\ /\ -------------------------------------------------
+
+//AUTH Routes
+app.get("/register", (req,res) => {
+	res.render("register");
+});
+//Sign up logic
+app.post("/register", (req,res) => {
+	var newUser = new User({username: req.body.username});
+	User.register(newUser, req.body.password, (err, user) => {
+		if(err){
+			console.log(err);
+			return res.render("register");
+		} else {
+			passport.authenticate("local")(req, res, () => {
+				res.redirect("/campgrounds");
+			});
+		}
+	});
+});
 
 app.listen(3000, ()=> {
 	console.log("YelpCamp listening on Port 3000");
