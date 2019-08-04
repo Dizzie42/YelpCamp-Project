@@ -6,6 +6,8 @@
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 		<!-- My main.css file -->
 		<link rel="stylesheet" href="/stylesheets/main.css">
+		<!-- Font Awesome -->
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 		<!-- jQuery library -->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 		<!-- Popper JS -->
@@ -29,22 +31,36 @@
 					</li>
 				</ul>
 				<ul class="navbar-nav">
-					<!-- <% //if(!currentUser){ %> -->
+					<% if(!currentUser){ %>
 						<li class="nav-item <%= typeof page !== 'undefined' && page === 'login' ? 'active' : '' %>">
 							<a href="/login" class="nav-link">Login</a>
 						</li>
 						<li class="nav-item <%= typeof page !== 'undefined' && page === 'register' ? 'active' : '' %>">
 							<a href="/register" class="nav-link">Sign Up</a>
 						</li>
-					<!-- <% //} else { %> -->
+					<% } else { %>
 						<li class="nav-item">
-							<a href="#" class="nav-link">Signed In As TEST</a>
-							<!--USE THIS LINE ONCE WE HAVE A USER <a href="#" class="nav-link">Signed In As <%=// currentUser.username %></a> -->
+							<a href="#" class="nav-link">Signed In As <%= currentUser.username %></a>
 						</li>
 						<li class="nav-item">
-							<a href="/campgrounds" class="nav-link">Logout</a>
+							<a href="#" data-toggle="modal" data-target=".logoutModal" class="nav-link">Logout</a>
 						</li>
-					<!-- <% //} %> -->
+					<% } %>
 				</ul>
 			</div>
 		</nav>
+
+		
+
+		<div class="modal logoutModal" tabindex="-1" role="dialog" aria-hidden="true">
+			<div class="modal-dialog modal-md">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h4>Logout <i class="fa fa-lock"></i></h4>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+					</div>
+					<div class="modal-body"><i class="fa fa-question-circle"></i> Are you sure you want to log-off?</div>
+					<div class="modal-footer"><a href="/logout" class="btn btn-primary btn-block">Logout</a></div>
+				</div>
+			</div>
+		</div>
