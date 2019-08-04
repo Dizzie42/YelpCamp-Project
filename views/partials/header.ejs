@@ -4,6 +4,8 @@
 		<title>YelpCamp</title>
 		<!-- Latest compiled and minified CSS -->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+		<!-- My main.css file -->
+		<link rel="stylesheet" href="/stylesheets/main.css">
 		<!-- jQuery library -->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 		<!-- Popper JS -->
@@ -23,7 +25,7 @@
 			<div class="collapse navbar-collapse" id="navbarNavDropdown">
 				<ul class="navbar-nav mr-auto">
 					<li class="nav-item <%= typeof page !== 'undefined' && page === 'campgrounds' ? 'active' : '' %>">
-						<a href="/campgrounds" class="nav-link">Home</a>
+						<a href="/campgrounds" class="nav-item nav-link">Home</a>
 					</li>
 				</ul>
 				<ul class="navbar-nav">

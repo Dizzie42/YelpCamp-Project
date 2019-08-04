@@ -56,3 +56,9 @@ Part 7:
 
 	-Add comment new and create (POST) routes
 	-Add new comment form and link it all up
+	
+Part 8: 
+#Style show page
+
+	-Add sidebar
+	-Display comments in Bootstrap format

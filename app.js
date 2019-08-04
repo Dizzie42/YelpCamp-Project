@@ -3,6 +3,7 @@ var express = require("express"),
 	bodyParser = require("body-parser"),
 	mongoose = require("mongoose"),
 	Campground = require("./models/campground"),
+	Comment = require("./models/comment");
 	seedDB = require("./seeds");
 
 seedDB();
@@ -20,6 +21,7 @@ mongoose.connect("mongodb+srv://devsprout:1234@udemy-project-hpcze.mongodb.net/Y
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", "ejs");
+app.use(express.static(__dirname + "/public"));
 
 
 // Campground.create({name: "Granite Hill", image: "https://www.nps.gov/arch/planyourvisit/images/delicate3.jpg?maxwidth=650&autorotate=false", description: "This place sucks and smells like shite"}, (err, campground) => {
@@ -33,7 +35,7 @@ app.set("view engine", "ejs");
 
 //Landing Page
 app.get("/", (req,res) => {
-	res.render("landing.ejs");
+	res.render("landing");
 });
 
 
@@ -46,14 +48,14 @@ app.get("/campgrounds", (req,res) => {
 		if(err){
 			console.log(err);
 		} else {
-			res.render("index",{campgrounds:allCampgrounds});
+			res.render("campgrounds/index",{campgrounds:allCampgrounds});
 		}
 	});
 });
 
 //NEW - show form to create new CG
 app.get("/campgrounds/new", (req,res) => {
-	res.render("new.ejs");
+	res.render("campgrounds/new");
 });
 
 //CREATE - add new CG to database
@@ -81,11 +83,44 @@ app.get("/campgrounds/:id", (req,res) => {
 		if(err){
 			console.log(err);
 		} else {
-			res.render("show", {campground: foundCampground});
+			res.render("campgrounds/show", {campground: foundCampground});
 		}
 	});
 });
 
+//==============================
+//Comments Routes
+//==============================
+
+//NEW - Show form for new comments
+app.get("/campgrounds/:id/comments/new", (req,res) => {
+	Campground.findById(req.params.id, (err, campground) => {
+		if(err) {
+			console.log(err);
+		} else {
+			res.render("comments/new", {campground: campground});
+		}
+	});
+});
+
+app.post("/campgrounds/:id/comments", (req,res) => {
+	Campground.findById(req.params.id, (err, campground) => {
+		if(err){
+			console.log(err);
+			res.redirect("/campgrounds");
+		} else { 
+			Comment.create(req.body.comment, (err,comment) => {
+				if(err){
+					console.log(err);
+				} else {
+					campground.comments.push(comment);
+					campground.save();
+					res.redirect("/campgrounds/"+ campground._id);
+				}
+			});
+		}
+	});
+});
 //REST API /\ /\ /\ -------------------------------------------------
 
 app.listen(3000, ()=> {
