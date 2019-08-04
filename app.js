@@ -4,6 +4,7 @@ var express = require("express"),
 	mongoose = require("mongoose"),
 	passport = require("passport"),
 	LocalStrategy = require("passport-local"),
+	methodOverride = require("method-override"),
 	Campground = require("./models/campground"),
 	Comment = require("./models/comment");
 	User = require("./models/user");
@@ -21,6 +22,7 @@ var commentRoutes 		= require("./routes/comments"),
 mongoose.connect("mongodb+srv://devsprout:1234@udemy-project-hpcze.mongodb.net/YelpCamp?retryWrites=true&w=majority", {
 	useNewUrlParser: true,
 	useCreateIndex: true,
+	useFindAndModify: false
 }).then(() => {
 	console.log('Connected to DB');
 }).catch(err => {
@@ -43,6 +45,8 @@ passport.deserializeUser(User.deserializeUser());
 app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", "ejs");
 app.use(express.static(__dirname + "/public"));
+app.use(methodOverride("_method"));
+
 app.use(function(req, res, next) {
 	res.locals.currentUser = req.user;
 	next();

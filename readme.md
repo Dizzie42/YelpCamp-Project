@@ -81,3 +81,11 @@ Part 11:
 	-Associate users with comments (remove manual author entry)
 	-Save author automatically
 	-Add time posted
+	
+Part 12:
+#Editing Functionality
+
+	-Add method-override
+	-add edit route for campgrounds
+	-Add link to edit page
+	-Add update route
