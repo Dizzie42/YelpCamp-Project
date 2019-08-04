@@ -56,18 +56,18 @@ async function seedDB(){
 	await Campground.deleteMany({});
 	await Comment.deleteMany({});
 	
-	for(const seed of seeds) {
-		let campground = await Campground.create(seed);
-		let comment = await Comment.create(
-			{
-				text: "This place is great, but I wish there was internet",
-            	author: "Homer"
-			}
-		);
-		campground.comments.push(comment);
-		campground.save();
-	}
-	console.log("-Added test camps/comments..Done");
+// 	for(const seed of seeds) {
+// 		let campground = await Campground.create(seed);
+// 		let comment = await Comment.create(
+// 			{
+// 				text: "This place is great, but I wish there was internet",
+//             	author: "Homer"
+// 			}
+// 		);
+// 		campground.comments.push(comment);
+// 		campground.save();
+// 	}
+// 	console.log("-Added test camps/comments..Done");
 }
  
 module.exports = seedDB;

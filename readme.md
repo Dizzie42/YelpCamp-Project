@@ -62,3 +62,22 @@ Part 8:
 
 	-Add sidebar
 	-Display comments in Bootstrap format
+	
+Part 9:
+#Add authintication
+
+	-Add authentication functionality
+	-Show/hide links in navbar based on sign in or not
+	
+Part 10:
+#Refactor
+
+	-Refactor'd routes into /routes/...js files to clean up app.js
+	-Used express router to reorganize and cleanup
+	
+Part 11:
+#Users + comments
+
+	-Associate users with comments (remove manual author entry)
+	-Save author automatically
+	-Add time posted
