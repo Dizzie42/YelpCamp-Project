@@ -89,3 +89,9 @@ Part 12:
 	-add edit route for campgrounds
 	-Add link to edit page
 	-Add update route
+	
+Part 13:
+#Adding delete functionality to campgrounds
+
+	-Add destroy route
+	-Add delete button

@@ -18,6 +18,6 @@ var campgroundSchema = new mongoose.Schema({
 			ref: "Comment"
 		}
 	]
-});
+}, {timestamps: true});
 
 module.exports = mongoose.model("Campground", campgroundSchema);
