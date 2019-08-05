@@ -2,3 +2,7 @@
 	width: 100%;
 	height: 13vh;
 }
+
+#deleteForm {
+	display: inline;
+}
