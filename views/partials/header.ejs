@@ -51,7 +51,6 @@
 		</nav>
 
 		
-
 		<div class="modal logoutModal" tabindex="-1" role="dialog" aria-hidden="true">
 			<div class="modal-dialog modal-md">
 				<div class="modal-content">
@@ -63,4 +62,17 @@
 					<div class="modal-footer"><a href="/logout" class="btn btn-primary btn-block">Logout</a></div>
 				</div>
 			</div>
+		</div>
+		
+		<div class="container">
+			<% if(error && error.length > 0) { %>
+				<div class="alert alert-danger" role="alert">
+					<%= error %>
+				</div>	
+			<% } %>
+			<% if(success && success.length > 0) { %>
+				<div class="alert alert-success" role="alert">
+					<%= success %>
+				</div>	
+			<% } %>
 		</div>

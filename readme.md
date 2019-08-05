@@ -146,6 +146,12 @@ Part 16:
 	-refactor middleware
 	-Refactor middleware
 	
+Part 17:
+#Add in flash messaging
+	
+	-Get a final demo version working
+	-Add bootstrap alerts to headers for error handling
+	
 TODO
 =======
 	-Remove dependencies

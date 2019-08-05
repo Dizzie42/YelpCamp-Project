@@ -1,14 +1,15 @@
-var express = require("express"),
-	app = express(),
-	bodyParser = require("body-parser"),
-	mongoose = require("mongoose"),
-	passport = require("passport"),
-	LocalStrategy = require("passport-local"),
-	methodOverride = require("method-override"),
-	Campground = require("./models/campground"),
-	Comment = require("./models/comment");
-	User = require("./models/user");
-	seedDB = require("./seeds");
+var express 		= require("express"),
+	app 			= express(),
+	bodyParser 		= require("body-parser"),
+	mongoose 		= require("mongoose"),
+	flash 			= require("connect-flash"),
+	passport		= require("passport"),
+	LocalStrategy 	= require("passport-local"),
+	methodOverride	= require("method-override"),
+	Campground		= require("./models/campground"),
+	Comment			= require("./models/comment");
+	User			= require("./models/user");
+	seedDB 			= require("./seeds");
 
 //seedDB();				//Used to purge database of data and add 12 example campgrounds *Without comments*
 
@@ -30,9 +31,10 @@ mongoose.connect("mongodb+srv://devsprout:1234@udemy-project-hpcze.mongodb.net/Y
 });
 
 
+app.use(flash());
 //Passsport config
 app.use(require("express-session")({
-	secret: "Cutest Dog",
+	secret: "1zt5YwklnR",
 	resave: false,
 	saveUninitialized: false
 }));
@@ -49,6 +51,8 @@ app.use(methodOverride("_method"));
 
 app.use(function(req, res, next) {
 	res.locals.currentUser = req.user;
+	res.locals.error = req.flash("error");
+	res.locals.success = req.flash("success");
 	next();
 });
 
