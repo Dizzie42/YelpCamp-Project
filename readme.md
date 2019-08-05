@@ -144,6 +144,7 @@ Part 16:
 	-User can onyl delete their own comments
 	-Hide/show buttons based on user signed in
 	-refactor middleware
+	-Refactor middleware
 	
 TODO
 =======
