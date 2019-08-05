@@ -142,6 +142,7 @@ TODO
 	-Remove dependencies
 	-Remove DB password for remote connect in app.js
 	-Add Update/Destroy routes for comments
+	-Add priceing model, currently static for all Campgrounds
 	-Improve UI
 	-Deploy
 
