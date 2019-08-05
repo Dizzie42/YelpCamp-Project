@@ -23,11 +23,12 @@
 						<br>
 						<em>Last edit: <%=campground.createdAt.toLocaleDateString('en-US',{hour: "numeric", minute: "numeric", second: "numeric", timeZoneName: "short"})%></em>
 					</p>
-					<a class="btn btn-warning btn-sm" href="/campgrounds/<%=campground._id%>/edit">Edit</a>
-					<form id="deleteForm" action="/campgrounds/<%=campground._id%>?_method=DELETE" method="POST">
-						<button class="btn btn-danger btn-sm">Delete</button>
-					</form>
-					
+					<%if(currentUser && campground.author.id.equals(currentUser._id)) { %>
+						<a class="btn btn-warning btn-sm" href="/campgrounds/<%=campground._id%>/edit">Edit</a>
+						<form id="deleteForm" action="/campgrounds/<%=campground._id%>?_method=DELETE" method="POST">
+							<button class="btn btn-danger btn-sm">Delete</button>
+						</form>
+					<% } %>
 					<hr>
 					<p class="card-text"><%=campground.description%></p>
 

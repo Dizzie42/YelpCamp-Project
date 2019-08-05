@@ -95,3 +95,10 @@ Part 13:
 
 	-Add destroy route
 	-Add delete button
+	
+Part 14:
+#Authorization
+
+	-User can only edit thier campgrounds
+	-User can only delete their campgrounds
+	-Hide/show edit/delete buttons

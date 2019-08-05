@@ -47,7 +47,7 @@ router.post("/login", passport.authenticate("local",
 router.get("/logout", (req,res) => {
 	var url = res;
 	req.logout();
-	res.redirect("/campgrounds");
+	res.redirect("back");
 });
 
 //==================
