@@ -41,7 +41,8 @@ router.post("/login", passport.authenticate("local",
 	{
 		successReturnToOrRedirect: "/campgrounds",
 		failureRedirect: "/login",
-		failureFlash: true
+		failureFlash: true,
+		//successFlash: "Welcome back!"				//If we want a successful login message
 	}),(req,res) => {});
 
 //Logout route
