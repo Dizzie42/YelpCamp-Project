@@ -102,3 +102,10 @@ Part 14:
 	-User can only edit thier campgrounds
 	-User can only delete their campgrounds
 	-Hide/show edit/delete buttons
+	
+Part 15:
+#Editing Comments
+
+	-Add edit routes for comments
+	-Add edit button
+	-Add update route
