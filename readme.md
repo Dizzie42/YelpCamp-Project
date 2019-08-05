@@ -137,12 +137,22 @@ Part 15:
 	-Add edit button
 	-Add update route
 	
+Part 16:
+#Comment authorization
+
+	-User can only edit their own comments
+	-User can onyl delete their own comments
+	-Hide/show buttons based on user signed in
+	-refactor middleware
+	
 TODO
 =======
 	-Remove dependencies
 	-Remove DB password for remote connect in app.js
-	-Add Update/Destroy routes for comments
-	-Add priceing model, currently static for all Campgrounds
+	-Add Update/Destroy routes for comments (DONE)
+	-Add better error messaging
+	-Add screenshots
+	-Add pricing model, currently static for all Campgrounds
 	-Improve UI
 	-Deploy
 
