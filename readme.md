@@ -1,3 +1,26 @@
+To run locally
+=======
+
+	-Download package
+	-Install node dependencies locally
+    -"body-parser": "^1.19.0",
+    -"ejs": "^2.6.2",
+    -"express": "^4.17.1",
+    -"express-session": "^1.16.2",
+    -"method-override": "^3.0.0",
+    -"mongoose": "^5.6.7",
+    -"nodemon": "^1.19.1",
+    -"passport": "^0.4.0",
+    -"passport-local": "^1.0.0",
+    -"passport-local-mongoose": "^5.0.1"
+	-NODE APP.JS	
+
+
+
+
+Changes/Additions
+=======
+
 Part 1: 
 #YelpCamp
 
@@ -109,3 +132,15 @@ Part 15:
 	-Add edit routes for comments
 	-Add edit button
 	-Add update route
+	
+TODO
+=======
+	-Remove dependencies
+	-Remove DB password for remote connect in app.js
+	-Add Update/Destroy routes for comments
+	-Improve UI
+	-Deploy
+
+Screenshots
+=======
+
