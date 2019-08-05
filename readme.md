@@ -3,6 +3,7 @@ To run locally
 
 	-Download package(includes node_modules)
 	-node app.js
+	-Naivgate to localhost:3000
 	
 	-Dependencies
 	
