@@ -152,6 +152,7 @@ Part 17:
 	-Get a final demo version working
 	-Add bootstrap alerts to headers for error handling
 	
+	
 Extra:
 #Extra features coming soon
 	

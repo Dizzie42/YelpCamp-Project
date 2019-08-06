@@ -32,6 +32,7 @@ mongoose.connect("mongodb+srv://devsprout:1234@udemy-project-hpcze.mongodb.net/Y
 
 
 app.use(flash());
+app.locals.moment = require("moment");
 //Passsport config
 app.use(require("express-session")({
 	secret: "1zt5YwklnR",

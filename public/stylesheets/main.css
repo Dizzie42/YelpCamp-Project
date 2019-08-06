@@ -12,9 +12,15 @@ element.style {
 }
 
 .footer {
-	position:absolute;
-	bottom:0;
-	width:100%;
-	height:auto;
-	padding: 5px;
+	text-align: right;
+	height: 24px; /* Replace with the height your footer should be*/
+    width: 100%; /* Don't change */
+    background-image: none;
+    background-repeat: repeat;
+    background-attachment: scroll;
+    background-position: 0 0;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+	padding: 2px;
 }
