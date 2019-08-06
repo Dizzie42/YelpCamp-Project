@@ -64,6 +64,6 @@ app.use("/campgrounds/:id/comments", commentRoutes);
 
 
 //start up server locally at https://class-setup.run.goorm.io/
-app.listen(3000, ()=> {
-	console.log("YelpCamp listening on Port 3000");
+app.listen(process.env.PORT, process.env.IP, function(){
+   console.log("The YelpCamp Server Has Started!");
 });
