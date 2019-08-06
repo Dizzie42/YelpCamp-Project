@@ -170,4 +170,22 @@ TODO
 
 Screenshots
 =======
+![Landing Page]https://ibb.co/60mP5Q0
 
+![/Campgrounds page (home page)]https://ibb.co/c8ffjPN
+
+![Add new CG - not logged in]https://ibb.co/Nyf9MCr
+
+![View CG - not logged in]https://ibb.co/mRz6pCm
+
+![Add new comment - not logged in]https://ibb.co/C6z4jrD
+
+![Create new CG - logged in]https://ibb.co/SXmpbZc
+
+![Add or edit comment - logged in]https://ibb.co/Q6FYk1g
+
+![Added comment]https://ibb.co/zxQbVfk
+
+![Delete CG and all associated comments]https://ibb.co/QH288dw
+
+![Show CG user owns]https://ibb.co/hdCrR9J
