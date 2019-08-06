@@ -3,6 +3,10 @@
 	height: 13vh;
 }
 
+element.style {
+	padding: 0;
+}
+
 .deleteForm {
 	display: inline;
 }
