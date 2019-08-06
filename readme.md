@@ -159,13 +159,11 @@ Extra:
 	-user profiles
 	-password reset
 	-ratings/reviews/likes
-	-Pricing model
 	
 TODO
 =======
 	-Remove dependencies
 	-Remove DB password for remote connect in app.js
-	-Add screenshots
 	
 	-Deploy
 

@@ -6,6 +6,24 @@ nav {
 	z-index: 1;
 }
 
+h1 {
+	font-size: 4em;
+	text-shadow: 2px 2px 10px black;
+}
+
+hr {
+	width: 15%;
+	background-color: #fff;
+}
+
+#landing-header h4 {
+	text-shadow: 2px 2px 10px black;
+	color: #fff;
+	margin-bottom: 40px;
+}
+
+
+
 #landing-header {
 	z-index: 1;
 	position: relative;
@@ -15,7 +33,6 @@ nav {
 
 #landing-header h1 {
 	color: #fff;
-	font-size: 4em;
 }
 
 .footer {
@@ -23,7 +40,6 @@ nav {
 	bottom:0;
 	width:100%;
 	height:auto;
-	z-index: 1;
 	padding: 5px;
 }
 
@@ -53,25 +69,24 @@ nav {
 	animation: imageAnimation 50s linear infinite; 
 }
 
-/* Temporarily using url links to imgur, can download images for a cleaner CSS*/
 .slideshow li:nth-child(1) { 
-  	background-image: url(http://i.imgur.com/K3mPv14.jpg) 	
+	background-image: url(http://i.imgur.com/K3mPv14.jpg);
 }
 .slideshow li:nth-child(2) { 
-	  background-image: url(http://i.imgur.com/SBEmFpv.jpg);
-	  animation-delay: 10s; 
+	background-image: url(http://i.imgur.com/SBEmFpv.jpg);
+	animation-delay: 10s; 
 }
 .slideshow li:nth-child(3) { 
-	  background-image: url(http://i.imgur.com/emvhOnb.jpg);
-	  animation-delay: 20s; 
+	background-image: url(http://i.imgur.com/emvhOnb.jpg);
+	animation-delay: 20s; 
 }
 .slideshow li:nth-child(4) { 
-	  background-image: url(http://i.imgur.com/2LSMCmJ.jpg);
-	  animation-delay: 30s; 
+	background-image: url(http://i.imgur.com/2LSMCmJ.jpg);
+	animation-delay: 30s; 
 }
 .slideshow li:nth-child(5) { 
-	  background-image: url(http://i.imgur.com/TVGe0Ef.jpg);
-	  animation-delay: 40s; 
+	background-image: url(http://i.imgur.com/TVGe0Ef.jpg);
+	animation-delay: 40s; 
 }
 
 @keyframes imageAnimation { 
@@ -84,10 +99,10 @@ nav {
 		animation-timing-function: ease-out;
 	}
 	20% {
-		opacity: 1
+		opacity: 1;
 	}
 	30% {
-		opacity: 0
+		opacity: 0;
 	}
 }
 
