@@ -1,3 +1,8 @@
+Deploy'd!
+=======
+Currently deploy'd on https://mighty-thicket-51191.herokuapp.com/
+
+
 To run locally
 =======
 
@@ -165,8 +170,6 @@ TODO
 =======
 	-Remove dependencies
 	-Remove DB password for remote connect in app.js
-	
-	-Deploy
 
 Screenshots
 =======
