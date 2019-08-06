@@ -26,16 +26,16 @@
 
 			<div class="collapse navbar-collapse" id="navbarNavDropdown">
 				<ul class="navbar-nav mr-auto">
-					<li class="nav-item <%= typeof page !== 'undefined' && page === 'campgrounds' ? 'active' : '' %>">
+					<li class="nav-item">
 						<a href="/campgrounds" class="nav-item nav-link">Home</a>
 					</li>
 				</ul>
 				<ul class="navbar-nav">
 					<% if(!currentUser){ %>
-						<li class="nav-item <%= typeof page !== 'undefined' && page === 'login' ? 'active' : '' %>">
+						<li class="nav-item">
 							<a href="/login" class="nav-link">Login</a>
 						</li>
-						<li class="nav-item <%= typeof page !== 'undefined' && page === 'register' ? 'active' : '' %>">
+						<li class="nav-item">
 							<a href="/register" class="nav-link">Sign Up</a>
 						</li>
 					<% } else { %>
