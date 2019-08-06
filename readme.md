@@ -152,15 +152,21 @@ Part 17:
 	-Get a final demo version working
 	-Add bootstrap alerts to headers for error handling
 	
+Extra:
+#Extra features coming soon
+	
+	-google map API for location
+	-user profiles
+	-password reset
+	-ratings/reviews/likes
+	-Pricing model
+	
 TODO
 =======
 	-Remove dependencies
 	-Remove DB password for remote connect in app.js
-	-Add Update/Destroy routes for comments (DONE)
-	-Add better error messaging
 	-Add screenshots
-	-Add pricing model, currently static for all Campgrounds
-	-Improve UI
+	
 	-Deploy
 
 Screenshots
