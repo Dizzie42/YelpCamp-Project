@@ -20,7 +20,7 @@ var commentRoutes 		= require("./routes/comments"),
 
 
 //DB Connect - connecting to a remote DB on MongoDB Atlas - TODO:  Change to local DB and/or remove password
-mongoose.connect("mongodb+srv://devsprout:1234@udemy-project-hpcze.mongodb.net/YelpCamp?retryWrites=true&w=majority", {
+mongoose.connect(process.env.DATABASEURL, {
 	useNewUrlParser: true,
 	useCreateIndex: true,
 	useFindAndModify: false
